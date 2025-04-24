@@ -9,17 +9,25 @@ export default function MainPage() {
     const handleChange = (e) => {
         setChecked(e.target.checked)
         console.log(checked)
+        
     }
 
     return (
-        <Stack component='main'>
-            <Stack component='header'>
+        <Stack component='main' className={checked ? 'dark' : 'light'} padding={{xs: ' 1.5em 1em', lg: '2em'}}>
+            <Stack component='header' sx={{display: 'flex',
+                flexDirection: {xs: 'column', lg: 'row'},
+                justifyContent: {xs: 'flex-start', lg: 'space-between', margin: '1em 0 '}}}>
                <Stack id='headTop-info'>
-               <Typography variant='h1'>  Social Media Dashboard</Typography>
+               <Typography variant='h1' 
+               fontSize={{xs:'1.5em', lg:'1.7em'}} marginY={1} >  Social Media Dashboard</Typography>
                <Typography variant='p'>Total Followers: 23,004</Typography>
+
+               <Stack marginY={2} display={{xs:'block', lg:'none'}}>
+                  <hr/>
+               </Stack>
                </Stack>
 
-               <Stack id='DarkMode-toggle'>
+               <Stack id='DarkMode-toggle' sx={{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: {xs: 'space-between', lg: 'flex-start'}}}>
                <Typography variant='h2' fontSize='1em'>Dark Mode</Typography>
                <Switch 
                checked={checked}

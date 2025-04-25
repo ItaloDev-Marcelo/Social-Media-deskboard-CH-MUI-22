@@ -1,5 +1,6 @@
 import {Stack,Typography,Switch} from '@mui/material'
 import { useState } from 'react'
+import { styled } from '@mui/material/styles';
 import UpData from '../components/UpData'
 import DownData from '../components/DownData'
 export default function MainPage() {
@@ -9,11 +10,52 @@ export default function MainPage() {
     const handleChange = (e) => {
         setChecked(e.target.checked)
         console.log(checked)
-        
     }
 
+
+
+    const IOSSwitch = styled((props) => (
+      <Switch focusVisibleClassName=".Mui-focusVisible" 
+      checked={checked}
+       onChange={handleChange} disableRipple {...props} />
+    ))(({ theme }) => ({
+      width: 58,
+      height: 34,
+      padding: 7,
+      '& .MuiSwitch-switchBase': {
+        padding: 1,
+        '&.Mui-checked': {
+          transform: 'translateX(24px)',
+          color: '#fff',
+          '& .MuiSwitch-thumb': {
+            backgroundColor: 'red', // bolinha ativa
+          },
+          '& + .MuiSwitch-track': {
+            backgroundColor: 'purple', // trilha ativa
+          },
+        },
+        '& .MuiSwitch-thumb': {
+          backgroundColor: 'pink', // bolinha desativada
+        },
+      },
+      '& .MuiSwitch-thumb': {
+         margin: 8,
+        width: 15,
+        height: 15,
+      },
+      '& .MuiSwitch-track': {
+        borderRadius: 20,
+        backgroundColor: 'blue', // trilha desativada
+        opacity: 1,
+      },
+    }));
+    
+    
+
     return (
-        <Stack component='main' className={checked ? 'dark' : 'light'} padding={{xs: ' 1.5em 1em', lg: '2em'}}>
+        <Stack component='main'
+         className={checked ? 'dark' : 'light'}
+          padding={{xs: ' 1.5em 1em', lg: '2em'}}>
             <Stack component='header' sx={{display: 'flex',
                 flexDirection: {xs: 'column', lg: 'row'},
                 justifyContent: {xs: 'flex-start', lg: 'space-between', margin: '1em 0 '}}}>
@@ -29,9 +71,9 @@ export default function MainPage() {
 
                <Stack id='DarkMode-toggle' sx={{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: {xs: 'space-between', lg: 'flex-start'}}}>
                <Typography variant='h2' fontSize='1em'>Dark Mode</Typography>
-               <Switch 
-               checked={checked}
-                onChange={handleChange}/>
+               <Stack marginRight={1}>
+               <IOSSwitch/>
+               </Stack>
                </Stack>
             </Stack>
             <Stack component='section'>
@@ -60,7 +102,7 @@ export default function MainPage() {
                {
                 DownData.map((item, index) => {
                    return (
-                      <Stack component='article'  key={index}>
+                      <Stack component='article' className='top-cards'  key={index}>
                          <Stack>
 
                          <Typography variant='h3'> {item.title}</Typography>

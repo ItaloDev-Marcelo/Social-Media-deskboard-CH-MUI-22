@@ -28,14 +28,14 @@ export default function MainPage() {
           transform: 'translateX(24px)',
           color: '#fff',
           '& .MuiSwitch-thumb': {
-            backgroundColor: 'red', // bolinha ativa
+            backgroundColor: 'black', // bolinha ativa
           },
           '& + .MuiSwitch-track': {
-            backgroundColor: 'purple', // trilha ativa
+            backgroundColor: 'pink', // trilha ativa
           },
         },
         '& .MuiSwitch-thumb': {
-          backgroundColor: 'pink', // bolinha desativada
+          backgroundColor: 'white', // bolinha desativada
         },
       },
       '& .MuiSwitch-thumb': {
@@ -45,7 +45,7 @@ export default function MainPage() {
       },
       '& .MuiSwitch-track': {
         borderRadius: 20,
-        backgroundColor: 'blue', // trilha desativada
+        backgroundColor: 'black', // trilha desativada
         opacity: 1,
       },
     }));
